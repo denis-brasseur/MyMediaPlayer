@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="previous">Fast_backward_font_awesome.svg</file>
+        <file alias="next">Fast_forward_font_awesome.svg</file>
+        <file alias="minus">Gnome-media-playlist-minus.png</file>
+        <file alias="plus">Gnome-media-playlist-plus.png</file>
+        <file alias="remove">Gnome-media-playlist-remove.png</file>
+        <file alias="repeat">Gnome-media-playlist-repeat.svg</file>
+        <file alias="repeat1">Gnome-media-playlist-repeat-1.png</file>
+        <file alias="repeatall">Gnome-media-playlist-repeat-a.png</file>
+        <file alias="shuffle">Gnome-media-playlist-shuffle.svg</file>
+        <file alias="pause">Octicons-playback-pause.svg</file>
+        <file alias="play">Octicons-playback-play.svg</file>
+        <file alias="stop">Octicons-primitive-square.svg</file>
+        <file alias="default_icon">Music.png</file>
+    </qresource>
+</RCC>

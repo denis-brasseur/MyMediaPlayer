@@ -1,0 +1,190 @@
+\hypertarget{classStatusBar}{}\section{Status\+Bar Class Reference}
+\label{classStatusBar}\index{Status\+Bar@{Status\+Bar}}
+
+
+a concatenation of 2 Q\+Labels and a \hyperlink{classClickableSlider}{Clickable\+Slider}, in order to display the progression of the played media, and the signals and slots to handle it  
+
+
+
+
+{\ttfamily \#include $<$statusbar.\+h$>$}
+
+
+
+Inheritance diagram for Status\+Bar\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=140pt]{classStatusBar__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Status\+Bar\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=140pt]{classStatusBar__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classStatusBar_af2f6ab9ea87a5337e9dad2bb39c0bb15}{duration\+Changed} (qint64 duration)
+\begin{DoxyCompactList}\small\item\em A slot to handle the signal launch by the player, when the currently read media duration has changed, a duration null, the first one send by player for every media, is ignored. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStatusBar_a9f002b8c9a2d5c48260a0ebbad12f9df}\label{classStatusBar_a9f002b8c9a2d5c48260a0ebbad12f9df}} 
+void \hyperlink{classStatusBar_a9f002b8c9a2d5c48260a0ebbad12f9df}{elapsed\+Second} (void)
+\begin{DoxyCompactList}\small\item\em A slot to handle the internal timer signal every second, increasing elapsed time, decreasing remaining time, and changing the Qlabels and the \hyperlink{classClickableSlider}{Clickable\+Slider} displayed times. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStatusBar_a3c4e217b69264cb6b07f587af9767209}\label{classStatusBar_a3c4e217b69264cb6b07f587af9767209}} 
+void \hyperlink{classStatusBar_a3c4e217b69264cb6b07f587af9767209}{start} (void)
+\begin{DoxyCompactList}\small\item\em A slot to handle the play signal of the \hyperlink{classMainWindow}{Main\+Window}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStatusBar_ae5c8930a2b9ec0b88c48dec8f46a55d5}\label{classStatusBar_ae5c8930a2b9ec0b88c48dec8f46a55d5}} 
+void \hyperlink{classStatusBar_ae5c8930a2b9ec0b88c48dec8f46a55d5}{pause} (void)
+\begin{DoxyCompactList}\small\item\em A slot to handle the pause signal of the \hyperlink{classMainWindow}{Main\+Window}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStatusBar_af52f3efb90d4c83a5602dbbf210e8d79}\label{classStatusBar_af52f3efb90d4c83a5602dbbf210e8d79}} 
+void \hyperlink{classStatusBar_af52f3efb90d4c83a5602dbbf210e8d79}{reset} (void)
+\begin{DoxyCompactList}\small\item\em A slot to handle the stop signal of the \hyperlink{classMainWindow}{Main\+Window}, reseting the displayed times. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStatusBar_aa36e38a90475a85dc8d84b31efc4e834}\label{classStatusBar_aa36e38a90475a85dc8d84b31efc4e834}} 
+void \hyperlink{classStatusBar_aa36e38a90475a85dc8d84b31efc4e834}{value\+Changed} (void)
+\begin{DoxyCompactList}\small\item\em A slot to handle the value\+Changed signal of the \hyperlink{classClickableSlider}{Clickable\+Slider}. \end{DoxyCompactList}\item 
+void \hyperlink{classStatusBar_a58be568ef32791d26f2d45063189c4af}{state\+Changed} (Q\+Media\+Player\+::\+State state)
+\begin{DoxyCompactList}\small\item\em A slot to handle the signal send by the player, when the read media is changed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classStatusBar_a7beb68db1b57bc79cb2502239ebc7585}\label{classStatusBar_a7beb68db1b57bc79cb2502239ebc7585}} 
+void \hyperlink{classStatusBar_a7beb68db1b57bc79cb2502239ebc7585}{clear} (void)
+\begin{DoxyCompactList}\small\item\em A slot to handle the absence of any media read by the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classStatusBar_adf37ac3b2bf684e9d9d53c8ea345b0b9}{set\+Position} (qint64 new\+Position)
+\begin{DoxyCompactList}\small\item\em A signal send to the player to change the second played in the currently read media. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classStatusBar_a51d704471d7c6b35567bf325bea87cfa}{Status\+Bar} (Q\+Widget $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em The constructor, creating the internal timer and setting every internal variables to 0. \end{DoxyCompactList}\item 
+void \hyperlink{classStatusBar_aec9c453a499cd3737f7dd24903aae133}{set\+Slider} (\hyperlink{classClickableSlider}{Clickable\+Slider} $\ast$slider)
+\begin{DoxyCompactList}\small\item\em The setter for the \hyperlink{classClickableSlider}{Clickable\+Slider}, it also connect the slider\textquotesingle{}s signal for a changed value to the class slot to handle it. \end{DoxyCompactList}\item 
+void \hyperlink{classStatusBar_a285ff0279e3f9d5b677d83ce236f6d25}{set\+Elapsed\+Time\+Label} (Q\+Label $\ast$label)
+\begin{DoxyCompactList}\small\item\em The setter for the Q\+Label displaying the elapsed time of the currently read media, this also set the displayed time to 00\+:00. \end{DoxyCompactList}\item 
+void \hyperlink{classStatusBar_af8e70f7ce434b29b04a5aaced2dd05ae}{set\+Remaining\+Time\+Label} (Q\+Label $\ast$label)
+\begin{DoxyCompactList}\small\item\em The setter for the Q\+L\+Abel displaying the remaining time of the currently read media, this also set the displayed time to 00\+:00. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+a concatenation of 2 Q\+Labels and a \hyperlink{classClickableSlider}{Clickable\+Slider}, in order to display the progression of the played media, and the signals and slots to handle it 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classStatusBar_a51d704471d7c6b35567bf325bea87cfa}\label{classStatusBar_a51d704471d7c6b35567bf325bea87cfa}} 
+\index{Status\+Bar@{Status\+Bar}!Status\+Bar@{Status\+Bar}}
+\index{Status\+Bar@{Status\+Bar}!Status\+Bar@{Status\+Bar}}
+\subsubsection{\texorpdfstring{Status\+Bar()}{StatusBar()}}
+{\footnotesize\ttfamily Status\+Bar\+::\+Status\+Bar (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+The constructor, creating the internal timer and setting every internal variables to 0. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & the Q\+Widget where this object is displayed, null by default \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classStatusBar_af2f6ab9ea87a5337e9dad2bb39c0bb15}\label{classStatusBar_af2f6ab9ea87a5337e9dad2bb39c0bb15}} 
+\index{Status\+Bar@{Status\+Bar}!duration\+Changed@{duration\+Changed}}
+\index{duration\+Changed@{duration\+Changed}!Status\+Bar@{Status\+Bar}}
+\subsubsection{\texorpdfstring{duration\+Changed}{durationChanged}}
+{\footnotesize\ttfamily void Status\+Bar\+::duration\+Changed (\begin{DoxyParamCaption}\item[{qint64}]{duration }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+A slot to handle the signal launch by the player, when the currently read media duration has changed, a duration null, the first one send by player for every media, is ignored. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em duration} & the media duration, in milliseconds \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStatusBar_a285ff0279e3f9d5b677d83ce236f6d25}\label{classStatusBar_a285ff0279e3f9d5b677d83ce236f6d25}} 
+\index{Status\+Bar@{Status\+Bar}!set\+Elapsed\+Time\+Label@{set\+Elapsed\+Time\+Label}}
+\index{set\+Elapsed\+Time\+Label@{set\+Elapsed\+Time\+Label}!Status\+Bar@{Status\+Bar}}
+\subsubsection{\texorpdfstring{set\+Elapsed\+Time\+Label()}{setElapsedTimeLabel()}}
+{\footnotesize\ttfamily void Status\+Bar\+::set\+Elapsed\+Time\+Label (\begin{DoxyParamCaption}\item[{Q\+Label $\ast$}]{label }\end{DoxyParamCaption})}
+
+
+
+The setter for the Q\+Label displaying the elapsed time of the currently read media, this also set the displayed time to 00\+:00. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em label} & the Q\+Label, created anywhere else \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStatusBar_adf37ac3b2bf684e9d9d53c8ea345b0b9}\label{classStatusBar_adf37ac3b2bf684e9d9d53c8ea345b0b9}} 
+\index{Status\+Bar@{Status\+Bar}!set\+Position@{set\+Position}}
+\index{set\+Position@{set\+Position}!Status\+Bar@{Status\+Bar}}
+\subsubsection{\texorpdfstring{set\+Position}{setPosition}}
+{\footnotesize\ttfamily void Status\+Bar\+::set\+Position (\begin{DoxyParamCaption}\item[{qint64}]{new\+Position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+A signal send to the player to change the second played in the currently read media. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em the} & new second to play \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStatusBar_af8e70f7ce434b29b04a5aaced2dd05ae}\label{classStatusBar_af8e70f7ce434b29b04a5aaced2dd05ae}} 
+\index{Status\+Bar@{Status\+Bar}!set\+Remaining\+Time\+Label@{set\+Remaining\+Time\+Label}}
+\index{set\+Remaining\+Time\+Label@{set\+Remaining\+Time\+Label}!Status\+Bar@{Status\+Bar}}
+\subsubsection{\texorpdfstring{set\+Remaining\+Time\+Label()}{setRemainingTimeLabel()}}
+{\footnotesize\ttfamily void Status\+Bar\+::set\+Remaining\+Time\+Label (\begin{DoxyParamCaption}\item[{Q\+Label $\ast$}]{label }\end{DoxyParamCaption})}
+
+
+
+The setter for the Q\+L\+Abel displaying the remaining time of the currently read media, this also set the displayed time to 00\+:00. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em label} & the Q\+Label, created anywhere else \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStatusBar_aec9c453a499cd3737f7dd24903aae133}\label{classStatusBar_aec9c453a499cd3737f7dd24903aae133}} 
+\index{Status\+Bar@{Status\+Bar}!set\+Slider@{set\+Slider}}
+\index{set\+Slider@{set\+Slider}!Status\+Bar@{Status\+Bar}}
+\subsubsection{\texorpdfstring{set\+Slider()}{setSlider()}}
+{\footnotesize\ttfamily void Status\+Bar\+::set\+Slider (\begin{DoxyParamCaption}\item[{\hyperlink{classClickableSlider}{Clickable\+Slider} $\ast$}]{slider }\end{DoxyParamCaption})}
+
+
+
+The setter for the \hyperlink{classClickableSlider}{Clickable\+Slider}, it also connect the slider\textquotesingle{}s signal for a changed value to the class slot to handle it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em slider} & the \hyperlink{classClickableSlider}{Clickable\+Slider}, created anywhere else. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStatusBar_a58be568ef32791d26f2d45063189c4af}\label{classStatusBar_a58be568ef32791d26f2d45063189c4af}} 
+\index{Status\+Bar@{Status\+Bar}!state\+Changed@{state\+Changed}}
+\index{state\+Changed@{state\+Changed}!Status\+Bar@{Status\+Bar}}
+\subsubsection{\texorpdfstring{state\+Changed}{stateChanged}}
+{\footnotesize\ttfamily void Status\+Bar\+::state\+Changed (\begin{DoxyParamCaption}\item[{Q\+Media\+Player\+::\+State}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+A slot to handle the signal send by the player, when the read media is changed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & the Q\+Media\+Player\+::\+State send by the player \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+statusbar.\+h\item 
+statusbar.\+cpp\end{DoxyCompactItemize}
