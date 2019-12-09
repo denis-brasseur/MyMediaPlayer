@@ -72,6 +72,7 @@ private:
     Ui::MainWindow *ui;
     Playlist* playlist;
     QMediaPlayer* player;
+    QVideoWidget* video;
     StatusBar* statusbar;
     enum loop loop;
     bool hide;

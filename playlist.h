@@ -23,7 +23,7 @@ public:
 
 /**
  * @brief A reimplementation of the QListWidget, where items are also QFileInfo,
- * used as a graphical playlist
+ * used as a graphical  playlist
  */
 
 class Playlist : public QListWidget

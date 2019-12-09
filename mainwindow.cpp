@@ -18,17 +18,21 @@ MainWindow::MainWindow(QWidget *parent)
     //play item when double clicked
     connect(this->playlist,&Playlist::itemDoubleClicked,this,&MainWindow::on_play_clicked);
 
+    //set VolumeSlider at 100
+    this->ui->volumeSlider->setValue(100);
+
 
     /*** MediaPlayer initialisation ***/
     this->player = new QMediaPlayer();
-    QVideoWidget *video = new QVideoWidget(this->ui->coverArt);
-    this->player->setVideoOutput(video);
+    this->video = new QVideoWidget(this->ui->videoDisplay);
+    this->player->setVideoOutput(this->video);
     connect(this,&MainWindow::play,this->player,&QMediaPlayer::play);
     connect(this,&MainWindow::pause,this->player,&QMediaPlayer::pause);
     connect(this,&MainWindow::stop,this->player,&QMediaPlayer::stop);
     connect(this->player,&QMediaPlayer::mediaStatusChanged,this,&MainWindow::end_of_media);
     connect(this->player,SIGNAL(metaDataChanged(const QString&, const QVariant&)),this,SLOT(metaDataChanged(const QString&, const QVariant&)));
     connect(this->player,&QMediaPlayer::mediaChanged,this->ui->coverArt,&QLabel::clear);
+    connect(this->ui->volumeSlider,&ClickableSlider::valueChanged,this->player,&QMediaPlayer::setVolume);
 //    connect(this->player,SIGNAL(metaDataChanged()),this,SLOT(metaDataChanged()));
 
     /*** Status Bar initialisation ***/
@@ -240,19 +244,25 @@ void MainWindow::metaDataChanged(const QString &key, const QVariant &value){
     qDebug() << this->player->metaData(QMediaMetaData::AudioCodec);
     if(key==QMediaMetaData::VideoCodec){
         qDebug() << "video";
+        this->ui->stackedWidget->setCurrentWidget(this->ui->videoDisplay);
         if(this->ui->coverArt->pixmap() != nullptr) this->ui->coverArt->clear();
-        dynamic_cast<QVideoWidget*>(this->ui->coverArt->children()[0])->setAspectRatioMode(Qt::KeepAspectRatio);
-        dynamic_cast<QVideoWidget*>(this->ui->coverArt->children()[0])->show();
+//        qDebug() << this->ui->coverArt->children().size();
+//        dynamic_cast<QVideoWidget*>(this->ui->coverArt->children()[0])->setAspectRatioMode(Qt::KeepAspectRatio);
+        this->video->setAspectRatioMode(Qt::KeepAspectRatio);
+//        dynamic_cast<QVideoWidget*>(this->ui->coverArt->children()[0])->show();
+        this->video->show();
+
     }
     else if(key==QMediaMetaData::AudioCodec){
         qDebug() << "audio";
 //        qDebug() << this->ui->coverArt->pixmap();
-        if(this->ui->coverArt->pixmap()==nullptr) this->ui->coverArt->setPixmap(QIcon::fromTheme(":/default_icon").pixmap(this->ui->coverArt->size()));
+//        if(this->ui->coverArt->pixmap()==nullptr) this->ui->coverArt->setPixmap(QIcon::fromTheme(":/default_icon").pixmap(this->ui->coverArt->size()));
 //        dynamic_cast<QVideoWidget*>(this->ui->coverArt->children()[0])->close();
     }
     else if(key==QMediaMetaData::CoverArtImage){
         qDebug() << "cover art";
         this->ui->coverArt->setPixmap(QPixmap::fromImage(value.value<QImage>().scaled(this->ui->coverArt->size(),Qt::KeepAspectRatio)));
+        this->ui->stackedWidget->setCurrentWidget(this->ui->coverArtPage);
     }
 }
 void MainWindow::metaDataChanged(){
